@@ -10,7 +10,6 @@ ERROR CASES: Return NULL for error cases.
 
 NOTES: Without using extra array or linked list.
 */
-
 #include <stdio.h>
 
 struct node {
@@ -19,5 +18,22 @@ struct node {
 };
 
 struct node * sortLinkedList(struct node *head) {
-	return NULL;
+	int swap=1,temp;
+	if (head == NULL || head->next == NULL)
+		return head;
+	struct node *headRef;
+	
+	for (struct node *endRef = NULL; swap == 1;endRef=headRef){
+		for (swap = 0, headRef = head; headRef->next != endRef; headRef = headRef->next){
+			if (headRef->num > headRef->next->num){
+				temp = headRef->num;
+				headRef->num = headRef->next->num;
+				headRef->next->num = temp;
+				swap = 1;
+			}
+		}
+
+
+	}
+	return head;
 }
